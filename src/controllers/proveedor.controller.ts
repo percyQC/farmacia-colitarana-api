@@ -3,11 +3,16 @@ import * as proveedorService from '../services/proveedor.service';
 import { Proveedor } from '../entities/proveedor';
 
 export const insertarProveedor = async (req: Request, res: Response) => {
-    console.log('insertarProveedor')
-    console.log('req.body',req.body)
-    const proveedor: Partial<Proveedor> = req.body;
-    const newProveedor: Proveedor = await proveedorService.insertarProveedor(proveedor)
-    res.json(newProveedor);
+    try {
+        console.log('insertarProveedor')
+        console.log('req.body',req.body)
+        const proveedor: Partial<Proveedor> = req.body;
+        const newProveedor: Proveedor = await proveedorService.insertarProveedor(proveedor)
+        res.json(newProveedor);
+    } catch (error) {
+        res.jsonp(error);
+    }  
+    
 }
 
 export const listarProveedor = async (req: Request, res: Response)=>{
@@ -33,3 +38,4 @@ export const darBajaProveedor = async (req: Request, res: Response)=>{
     const response = proveedorService.darBajaProveedor(Number(idProveedor));
     res.json(response);
 }
+
