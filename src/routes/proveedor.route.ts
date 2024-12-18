@@ -5,8 +5,8 @@ const router: Router = Router();
 
 router.post('/',insertarProveedor);
 router.get('/',listarProveedor);
-router.get('/:id_proveedor',obtenerProveedor);
-router.put('/:id_proveedor',actualizarProveedor);
-router.delete('/:id_proveedor',darBajaProveedor);
+router.get('/:idProveedor',obtenerProveedor);
+router.put('/:idProveedor',actualizarProveedor);
+router.delete('/:idProveedor',darBajaProveedor);
 
 export default router;
