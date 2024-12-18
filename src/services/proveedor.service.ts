@@ -17,10 +17,12 @@ export const obtenerProveedor = async (idProveedor: number ) : Promise<Proveedor
     return await repository.findOne({ where: { idProveedor , estadoAuditoria: EstadoAuditoria.ACTIVO } });  
 }
 
-export const actualizarProveedor = (idProveedor: number, data: any) => {
-    return {accion:`actualizarProveedor:${idProveedor}`};
+export const actualizarProveedor = async (idProveedor: number, data: Partial<Proveedor>) => {
+    await repository.update(idProveedor,data);
+    return obtenerProveedor(idProveedor)
 }
 
-export const darBajaProveedor = (idProveedor: number) => {
-    return {accion:`darBajaProveedor:${idProveedor}`};
+export const darBajaProveedor = async (idProveedor: number): Promise<void> => {
+    await repository.update(idProveedor, { estadoAuditoria: EstadoAuditoria.INACTIVO });
+    
 }
