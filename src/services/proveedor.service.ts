@@ -19,7 +19,7 @@ export const obtenerProveedor = async (idProveedor: number ) : Promise<Proveedor
 
 export const actualizarProveedor = async (idProveedor: number, data: Partial<Proveedor>) => {
     await repository.update(idProveedor,data);
-    return obtenerProveedor(idProveedor)
+    return obtenerProveedor(idProveedor);
 }
 
 export const darBajaProveedor = async (idProveedor: number): Promise<void> => {
