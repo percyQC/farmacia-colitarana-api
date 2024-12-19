@@ -1,9 +1,16 @@
 import { Request,Response }  from "express";
 import { BaseResponse } from "../shared/base-response";
+import { Message } from "../enums/message";
+import { Medicamento } from "../entities/medicamento";
+import * as medicamentoService from '../services/medicamento.service';
 
 
 export const insertarMedicamento = async (req: Request, res: Response) => {
     try {
+        console.log('insertarMedicamento');
+        const medicamento: Partial <Medicamento> = req.body;
+        const newMedicamento: Medicamento = await medicamentoService.insertarMedicamento(medicamento);
+        res.json(BaseResponse.success(newMedicamento,Message.INSERTADO_OK));
         
     } catch (error) {
         console.error(error);
