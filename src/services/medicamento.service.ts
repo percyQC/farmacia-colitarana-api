@@ -11,7 +11,10 @@ export const insertarMedicamento = async (data: Partial<Medicamento>): Promise<M
 }
 
 export const listarMedicamentos = async (): Promise<Medicamento[]> =>{
-    return await repository.find({where: {estadoAuditoria: EstadoAuditoria.ACTIVO}});
+    return await repository.find({
+        where: {estadoAuditoria: EstadoAuditoria.ACTIVO},
+        relations: ['medicamentoCategoria']
+    });
 }
 
 export const obtenerMedicamento= async (idMedicamento: number ) : Promise<Medicamento> => {

@@ -11,19 +11,19 @@ export class Medicamento{
     medicamentoCategoria: MedicamentoCategoria;
 
     @Column({name:'codigo'})
-    codigo:string;
+    codigo: string;
 
     @Column({name:'nombre'})
-    nombre:string;
+    nombre: string;
 
     @Column({name:'descripcion'})
-    descripcion:string;
+    descripcion: string;
 
     @Column({name:'imagen_url'})
-    imagenUrl:string;
+    imagenUrl: string;
 
     @Column({name:'precio_unitario'})
-    precioUnitario:string;
+    precioUnitario: number;
 
     @Column({name: 'estado'})
     estado: string;

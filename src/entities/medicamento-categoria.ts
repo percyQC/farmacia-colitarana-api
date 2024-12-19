@@ -3,7 +3,7 @@ import { Medicamento } from "./medicamento";
 
 
 
-@Entity('medicamentos_categorias')
+@Entity('medicamentos_categoria')
 export class MedicamentoCategoria{
     @PrimaryGeneratedColumn({name:'id_medicamento_categoria'})
     idMedicamentoCategoria: number;

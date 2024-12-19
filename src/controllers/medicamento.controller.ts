@@ -21,7 +21,9 @@ export const insertarMedicamento = async (req: Request, res: Response) => {
 
 export const listarMedicamentos = async (req: Request, res: Response) => {
     try {
-        
+        console.log('listarMedicamentos');
+        const medicamentos: Medicamento[] = await medicamentoService.listarMedicamentos();
+        res.json(BaseResponse.success(medicamentos));
     } catch (error) {
         console.error(error);
         res.status(500).json(BaseResponse.error(error.message));
