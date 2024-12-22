@@ -1,8 +1,5 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Medicamento } from "./medicamento";
-
-
-
 @Entity('medicamentos_categoria')
 export class MedicamentoCategoria{
     @PrimaryGeneratedColumn({name:'id_medicamento_categoria'})
@@ -16,6 +13,9 @@ export class MedicamentoCategoria{
 
     @Column({name:'imagen_url'})
     imagenUrl: string;
+
+    @Column({name: 'estado_auditoria'})
+    estadoAuditoria: string;
         
     @CreateDateColumn({name: 'fecha_creacion_auditoria'})
     fechaCreacionAuditoria: Date;
