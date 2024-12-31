@@ -18,7 +18,10 @@ export const listarMedicamentos = async (): Promise<Medicamento[]> =>{
 }
 
 export const obtenerMedicamento= async (idMedicamento: number ) : Promise<Medicamento> => {
-    return await repository.findOne({ where: { idMedicamento , estadoAuditoria: EstadoAuditoria.ACTIVO } });  
+    return await repository.findOne({ 
+        where: { idMedicamento , estadoAuditoria: EstadoAuditoria.ACTIVO },
+        relations: ['medicamentoCategoria']
+    });  
 }
 
 export const actualizarMedicamento = async (idMedicamento: number, data: Partial<Medicamento>) => {

@@ -3,10 +3,16 @@ import * as proveedorService from '../services/proveedor.service';
 import { Proveedor } from '../entities/proveedor';
 import { BaseResponse } from '../shared/base-response';
 import { Message } from '../enums/message';
+import { insertarProveedorSchema } from '../validators/proveedor.schema';
 
 export const insertarProveedor = async (req: Request, res: Response) => {
     try {
-        console.log('insertarProveedor')
+        console.log('insertarProveedor');
+        const { error } = insertarProveedorSchema.validate(req.body);
+        if(error){
+            res.status(400).json(BaseResponse.error(error.message,400));
+            return;
+        }
         const proveedor: Partial<Proveedor> = req.body;
         const newProveedor: Proveedor = await proveedorService.insertarProveedor(proveedor)
         res.json(BaseResponse.success(newProveedor,Message.INSERTADO_OK));
